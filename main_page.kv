@@ -1,0 +1,133 @@
+#<main_page@Screen>:
+#    name: "main_page"
+#    orientation: 'vertical'
+#
+#    ############### Title, help, and settings ##############
+#    BoxLayout:
+#        orientation: 'horizontal'
+#        size_hint: 1, .1
+#
+#        Button:
+#            id: help_button
+#            background_color: 0,0,0,0
+#            on_release: Factory.Help_page().open()
+#            Image:
+#                center_x: self.parent.center_x
+#                center_y: self.parent.center_y
+#                source: './images/qmark3.webp'
+#
+#        Button:
+#            text: "Bendy"
+#            size_hint: 2.5, 1
+#            pos_hint: {"center_y": .5}
+#
+#        Button:
+#            id: settings_button
+#            background_color: 0,0,0,0
+#            on_press: root.btnfunc()
+#            on_release: Factory.Settings_page().open()
+#            Image:
+#                center_x: self.parent.center_x
+#                center_y: self.parent.center_y
+#                source: './images/settingsicon.png'
+#
+#
+#    ############## Graph ##############
+#    Image:
+#        id: central_graph
+#        source: 'images/graphs/graph1.png'
+#        size_hint: .8, 1
+#        pos_hint: {"center_x": .5}
+#
+#
+#
+#    ############### New measurement button ##############
+#    MDFillRoundFlatButton:
+#        id: take_measurement_button
+#        text: "Take new measurement"
+#        theme_text_color: "Custom"
+#        text_color: 0, 0, 1, 1
+#        pos_hint: {"center_x": .5}
+#        #on_release: Factory.Measurement_page().open()
+#        on_release: root.go_to_measure_screen()
+#
+#
+#
+#
+#
+#
+#    #******************* Scrollviews *******************#
+#
+#    ScrollView:
+#        GridLayout:
+#            size_hint_y: None
+#            cols: 1
+#            row_default_height: root.height*0.2
+#            height: self.minimum_height
+#            padding: "10dp"
+#
+#            ############### Hip Scrollview ##############
+#            ScrollView:
+#                GridLayout:
+#                    padding: "5dp"
+#                    id: container_hip
+#                    size_hint_x: None
+#                    rows: 1
+#                    col_default_width: root.width/2.75
+#                    ToggleButton:
+#                        text: "Hip1"
+#                        id: Hip1
+#                        group: "current_movement"
+#                        state: "down"
+#                        on_press: root.toggle_movement(self)
+#                    ToggleButton:
+#                        text: "Hip2"
+#                        id: Hip2
+#                        group: "current_movement"
+#                        on_press: root.toggle_movement(self)
+#                    ToggleButton:
+#                        text: "Hip3"
+#                        id: Hip3
+#                        group: "current_movement"
+#                        on_press: root.toggle_movement(self)
+#
+#            ############### Shoulder Scrollview ##############
+#            ScrollView:
+#                GridLayout:
+#                    padding: "5dp"
+#                    id: container_knee
+#                    size_hint_x: None
+#                    rows: 1
+#                    col_default_width: root.width/2.75
+#                    Button:
+#                        text: "Shoulder1"
+#                    Button:
+#                        text: "Shoulder2"
+#                    Button:
+#                        text: "Shoulder3"
+#
+#        ############### Elbow Scrollview ##############
+#            ScrollView:
+#                GridLayout:
+#                    padding: "5dp"
+#                    id: container_knee
+#                    size_hint_x: None
+#                    rows: 1
+#                    col_default_width: root.width/2.75
+#                    Button:
+#                        text: "Elbow1"
+#                    Button:
+#                        text: "Elbow2"
+#
+#        ############### Knee Scrollview ##############
+#            ScrollView:
+#                GridLayout:
+#                    padding: "5dp"
+#                    id: container_knee
+#                    size_hint_x: None
+#                    rows: 1
+#                    col_default_width: root.width/2.75
+#                    Button:
+#                        text: "Knee1"
+#                    Button:
+#                        text: "Knee2"

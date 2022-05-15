@@ -1,0 +1,38 @@
+# self.ids.shoulder_1.add_widget(MDRectangleFlatIconButton(
+        #     text="shoulder",
+        #     icon="language-python",
+        #     line_color=(0, 0, 0, 0),
+        # ))
+        # self.ids.shoulder_2.add_widget(MDRectangleFlatIconButton(
+        #     text="shoulder",
+        #     icon="language-python",
+        #     line_color=(0, 0, 0, 0),
+        # ))
+        # self.ids.shoulder_3.add_widget(MDRectangleFlatIconButton(
+        #     text="shoulder",
+        #     icon="language-python",
+        #     line_color=(0, 0, 0, 0),
+        # ))
+        # for i in range(2):
+        #     self.ids.container_knee.add_widget(Button(text=f"Knee: {i}"))
+
+
+
+
+class MD_access(MDApp):
+    def btnfunc(self, obj):
+        print("button is pressed!!")
+
+    def get_MD_Label(self):
+        l = MDLabel(text="HI PEOPLE!", halign='center',
+                        theme_text_color="Custom",
+                        text_color=(0.5, 0, 0.5, 1),
+                        font_style='Caption')
+        return l
+
+    def get_MD_flat_button(self, string):
+        return MDRectangleFlatIconButton(
+                text=string,
+                icon="language-python",
+                line_color=(0, 0, 0, 0),
+            )

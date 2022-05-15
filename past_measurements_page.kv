@@ -1,0 +1,30 @@
+<past_measurements_page@Screen>
+    canvas.before:
+        Color:
+            rgba: (1,1,1,1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: "10dp"
+        padding: "10dp"
+        ############### Title, help, and settings ##############
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, .1
+
+
+            Button:
+                id: back_button
+                background_color: 0,0,0,0
+                on_release: app.root.current = "main_page"
+                Image:
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+                    source: './images/back_button.jpeg'
+
+            Button:
+                text: "past_measurements page"
+                size_hint: 2.5, 1
+                pos_hint: {"center_y": .5}

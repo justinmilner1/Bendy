@@ -1,0 +1,81 @@
+<measurement_page@Screen>
+    canvas.before:
+        Color:
+            rgba: (1,1,1,1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    BoxLayout:
+        id: main_layout
+        orientation: 'vertical'
+        spacing: "10dp"
+        padding: "10dp"
+        ############### Title, back button, and help button ##############
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, .1
+            Button:
+                on_release: app.root.current = "main_page"
+                size_hint: 1, 1
+                background_color:0,0,0,0
+                Image:
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+                    source: './images/back_button.jpeg'
+            Button:
+                text: "New Measurement"
+                size_hint: 2.5, 1
+                pos_hint: {"center_y": .5}
+
+            Button:
+                id: settings_button
+                background_color: 0,0,0,0
+                on_release: app.root.current = "help_page"
+                Image:
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+                    source: './images/qmark3.webp'
+
+        ############### Main video ##############
+        Image:
+            id: main_video
+            size_hint: 1, .9
+
+        ############### Record button ##############
+        Button:
+            text: 'Start recording'
+            size_hint: 1, .1
+            on_release:
+                root.start_recording()
+
+        ############### Recording length adjustment ##############
+        BoxLayout:
+            id: recording_length_container
+            orientation: 'horizontal'
+            size_hint:1, .1
+            Button:
+                text: 'Recording length (seconds):'
+                font_size: self.width/16
+                size_hint: .5, 1
+
+            Button:
+                text: '+'
+                size_hint: .15, 1
+                on_release:
+                    root.adjust_recording_length(1)
+
+            Button:
+                id: recording_length
+                size_hint: .2, 1
+                text: str(root.recording_length)
+
+
+
+            Button:
+                text: '-'
+                size_hint: .15, 1
+                on_release:
+                    root.adjust_recording_length(-1)
+
+
+

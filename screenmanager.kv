@@ -1,0 +1,171 @@
+#: include measurement_page.kv
+#: include settings_page.kv
+#: include help_page.kv
+#: include past_measurements_page.kv
+#: include measurement_result_page.kv
+
+#: import NoTransition kivy.uix.screenmanager.NoTransition
+
+ScreenManager:
+    transition: NoTransition()
+    Screen:
+
+    main_page:
+
+    help_page:
+
+    settings_page:
+
+    measurement_page:
+
+    past_measurements_page:
+
+    measurement_result_page:
+
+
+<main_page>:
+
+
+    canvas.before:
+        Color:
+            rgba: (1,1,1,1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: "10dp"
+        padding: "10dp"
+        ############### Title, help, and settings ##############
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, .1
+
+
+            Button:
+                id: help_button
+                background_color: 0,0,0,0
+                on_release: app.root.current = "help_page"
+                Image:
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+                    source: './images/qmark3.webp'
+
+            Button:
+                text: "Bendy"
+                size_hint: 2.5, 1
+                pos_hint: {"center_y": .5}
+
+            Button:
+                id: settings_button
+                background_color: 0,0,0,0
+                on_release: app.root.current = "settings_page"
+                Image:
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+                    source: './images/settingsicon.png'
+
+
+        ############## Graph ##############
+        Image:
+            id: central_graph
+            source: 'images/graphs/graph1.png'
+            size_hint: .8, 1
+            pos_hint: {"center_x": .5}
+
+
+
+        ############### New measurement button ##############
+        MDFillRoundFlatButton:
+            id: take_measurement_button
+            text: "Take new measurement"
+            theme_text_color: "Custom"
+            text_color: 0, 0, 1, 1
+            pos_hint: {"center_x": .5}
+            on_release: app.root.current = "measurement_page"
+
+        ############### Past measurements button ##############
+        MDFillRoundFlatButton:
+            id: go_to_past_measurements_button
+            text: "View past measurements"
+            theme_text_color: "Custom"
+            text_color: 0, 0, 1, 1
+            pos_hint: {"center_x": .5}
+            on_release: app.root.current = "past_measurements_page"
+
+
+        #******************* Scrollviews *******************#
+
+        ScrollView:
+            GridLayout:
+                size_hint_y: None
+                cols: 1
+                row_default_height: root.height*0.2
+                height: self.minimum_height
+                padding: "10dp"
+
+                ############### Hip Scrollview ##############
+                ScrollView:
+                    GridLayout:
+                        padding: "5dp"
+                        id: container_hip
+                        size_hint_x: None
+                        rows: 1
+                        col_default_width: root.width/2.75
+                        ToggleButton:
+                            text: "Hip1"
+                            id: Hip1
+                            group: "current_movement"
+                            state: "down"
+                            on_press: root.toggle_movement(self)
+                        ToggleButton:
+                            text: "Hip2"
+                            id: Hip2
+                            group: "current_movement"
+                            on_press: root.toggle_movement(self)
+                        ToggleButton:
+                            text: "Hip3"
+                            id: Hip3
+                            group: "current_movement"
+                            on_press: root.toggle_movement(self)
+
+                ############### Shoulder Scrollview ##############
+                ScrollView:
+                    GridLayout:
+                        padding: "5dp"
+                        id: container_knee
+                        size_hint_x: None
+                        rows: 1
+                        col_default_width: root.width/2.75
+                        Button:
+                            text: "Shoulder1"
+                        Button:
+                            text: "Shoulder2"
+                        Button:
+                            text: "Shoulder3"
+
+            ############### Elbow Scrollview ##############
+                ScrollView:
+                    GridLayout:
+                        padding: "5dp"
+                        id: container_knee
+                        size_hint_x: None
+                        rows: 1
+                        col_default_width: root.width/2.75
+                        Button:
+                            text: "Elbow1"
+                        Button:
+                            text: "Elbow2"
+
+            ############### Knee Scrollview ##############
+                ScrollView:
+                    GridLayout:
+                        padding: "5dp"
+                        id: container_knee
+                        size_hint_x: None
+                        rows: 1
+                        col_default_width: root.width/2.75
+                        Button:
+                            text: "Knee1"
+                        Button:
+                            text: "Knee2"

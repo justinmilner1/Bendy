@@ -1,0 +1,38 @@
+<MainWid>:
+    orientation: 'vertical'
+    MDRectangleFlatIconButton:
+        id: title
+    BoxLayout:
+        ScrollView:
+            GridLayout:
+                id: container_shoulder
+                size_hint_x: None
+                rows: 1
+                col_default_width: root.width*0.2
+                width: self.minimum_width
+                Button:
+                    id: shoulder_1
+                    text: "B1"
+                    Image:
+                        source: 'shoulder_rom.jpg'
+                        allow_stretch: True
+                Button:
+                    id: shoulder_2
+                    text: "B2"
+                    Image:
+                        source: 'shoulder_rom2.jpg'
+                        allow_stretch: True
+                Button:
+                    id: shoulder_3
+                    text: "B3"
+                    Image:
+                        source: 'shoulder_rom3.jpg'
+                        allow_stretch: True
+    BoxLayout:
+        ScrollView:
+            GridLayout:
+                id: container_knee
+                size_hint_x: None
+                rows: 1
+                col_default_width: root.width*0.2
+                width: self.minimum_width
