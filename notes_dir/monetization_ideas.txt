@@ -1,0 +1,5 @@
+Ideas:
+- ads (banner, video)
+- subscription to remove ads
+- multiple account capabilities --> PT/healthcare
+- link data api --> PT/healthcare

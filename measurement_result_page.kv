@@ -1,2 +1,51 @@
 <measurement_result_page@Screen>
-    title: "measurement_result_page"
+    canvas.before:
+        Color:
+            rgba: (1,1,1,1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    BoxLayout:
+        id: main_layout
+        orientation: 'vertical'
+        spacing: "10dp"
+        padding: "10dp"
+        ############### Title, back button, and help button ##############
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, .1
+            Button:
+                text: "Result"
+                size_hint: 2.5, 1
+                pos_hint: {"center_y": .5}
+
+        ############### Best measurement ##############
+        Image:
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            source: './images/best.png'
+
+        Button:
+            text: 'Angle'
+            size_hint: 1, .1
+        ###############################################
+        Button:
+            text: 'Use this result?'
+            size_hint: 1, .1
+        ############### Recording length adjustment ##############
+        BoxLayout:
+            id: recording_length_container
+            orientation: 'horizontal'
+            size_hint:1, .1
+            Button:
+                text: 'Yes'
+                font_size: self.width/16
+                size_hint: .5, 1
+                on_release: root.yes_button_click()
+            Button:
+                text: 'No'
+                font_size: self.width/16
+                size_hint: .5, 1
+                on_release: root.no_button_click()
+
+

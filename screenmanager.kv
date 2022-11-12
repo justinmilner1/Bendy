@@ -3,13 +3,14 @@
 #: include help_page.kv
 #: include past_measurements_page.kv
 #: include measurement_result_page.kv
+#: include loading_page.kv
 
 #: import NoTransition kivy.uix.screenmanager.NoTransition
 
 ScreenManager:
     transition: NoTransition()
-    Screen:
 
+    Screen:
     main_page:
 
     help_page:
@@ -22,10 +23,10 @@ ScreenManager:
 
     measurement_result_page:
 
+    loading_page:
+
 
 <main_page>:
-
-
     canvas.before:
         Color:
             rgba: (1,1,1,1)
@@ -41,7 +42,6 @@ ScreenManager:
             orientation: 'horizontal'
             size_hint: 1, .1
 
-
             Button:
                 id: help_button
                 background_color: 0,0,0,0
@@ -49,10 +49,10 @@ ScreenManager:
                 Image:
                     center_x: self.parent.center_x
                     center_y: self.parent.center_y
-                    source: './images/qmark3.webp'
+                    source: './images/app_images/qmark3.webp'
 
             Button:
-                text: "Bendy"
+                text: "Mobility Compass"
                 size_hint: 2.5, 1
                 pos_hint: {"center_y": .5}
 
@@ -63,13 +63,13 @@ ScreenManager:
                 Image:
                     center_x: self.parent.center_x
                     center_y: self.parent.center_y
-                    source: './images/settingsicon.png'
+                    source: './images/app_images/settingsicon.png'
 
 
         ############## Graph ##############
         Image:
             id: central_graph
-            source: 'images/graphs/graph1.png'
+            source: 'images/graphs/Hip_Abduction.png'
             size_hint: .8, 1
             pos_hint: {"center_x": .5}
 
@@ -78,7 +78,8 @@ ScreenManager:
         ############### New measurement button ##############
         MDFillRoundFlatButton:
             id: take_measurement_button
-            text: "Take new measurement"
+            text: "Take new " + str(root.current_movement_type) + " measurement"
+            text_size: self.size
             theme_text_color: "Custom"
             text_color: 0, 0, 1, 1
             pos_hint: {"center_x": .5}
@@ -87,7 +88,8 @@ ScreenManager:
         ############### Past measurements button ##############
         MDFillRoundFlatButton:
             id: go_to_past_measurements_button
-            text: "View past measurements"
+            text: "View past " + str(root.current_movement_type) + " measurements"
+            text_size: self.size
             theme_text_color: "Custom"
             text_color: 0, 0, 1, 1
             pos_hint: {"center_x": .5}
@@ -112,22 +114,26 @@ ScreenManager:
                         size_hint_x: None
                         rows: 1
                         col_default_width: root.width/2.75
+
                         ToggleButton:
-                            text: "Hip1"
-                            id: Hip1
+                            text: "Hip Abduction"
+                            text_size: self.size
+                            id: Hip_Abduction
                             group: "current_movement"
                             state: "down"
-                            on_press: root.toggle_movement(self)
+                            on_press: root.toggle_movement_type(self)
                         ToggleButton:
-                            text: "Hip2"
-                            id: Hip2
+                            text: "Hip Flexion"
+                            text_size: self.size
+                            id: Hip_Flexion
                             group: "current_movement"
-                            on_press: root.toggle_movement(self)
+                            on_press: root.toggle_movement_type(self)
                         ToggleButton:
-                            text: "Hip3"
-                            id: Hip3
+                            text: "Hip Internal Rotation"
+                            text_size: self.size
+                            id: Hip_Internal_Rotation
                             group: "current_movement"
-                            on_press: root.toggle_movement(self)
+                            on_press: root.toggle_movement_type(self)
 
                 ############### Shoulder Scrollview ##############
                 ScrollView:

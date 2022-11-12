@@ -1,2 +1,6 @@
 # Project exclude paths
-/venv/
+venv/
+models/
+storage/
+images/
+tf_pose/

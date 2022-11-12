@@ -1,0 +1,21 @@
+<loading_page@Screen>
+    canvas.before:
+        Color:
+            rgba: (1,1,1,1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    BoxLayout:
+        id: main_layout
+        orientation: 'vertical'
+        spacing: "10dp"
+        padding: "10dp"
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, .1
+
+            Button:
+                text: "Loading..."
+                size_hint: 2.5, 1
+                pos_hint: {"center_y": .5}

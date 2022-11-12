@@ -1,0 +1,18 @@
+start the camera.
+Keep camera running by allowing that main thread to loop for the specified amount of time
+Before entering the above loop, start a new thread, this thread will take the measurements
+
+We will not be outputting the pose estimates on the screen
+We will be tracking pose estimates in the background, at a slower rate (than can produce a non-latent screen display)
+
+Take measurements as fast as compute allows, keep track of all measurements.
+When measuring ends, run a window over the measurements
+Take the measurement at center of the window, where the maximum average is achieved.
+
+Add the pose estimation overlay to this image, discard all other images
+return the measurement amount and overlayed images to the post-measurement screen.
+
+
+I'm struggling to do multithreading with kivy, as a result:
+I'm going to do an intake phase, then a calculate phase, then a display results phase.
+This is a negative because it won't do eager computation... but im stuck.

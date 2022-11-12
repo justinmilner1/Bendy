@@ -21,7 +21,7 @@
                 Image:
                     center_x: self.parent.center_x
                     center_y: self.parent.center_y
-                    source: './images/back_button.jpeg'
+                    source: './images/app_images/back_button.jpeg'
             Button:
                 text: "Settings page"
                 size_hint: 2.5, 1
@@ -34,7 +34,7 @@
                 Image:
                     center_x: self.parent.center_x
                     center_y: self.parent.center_y
-                    source: './images/qmark3.webp'
+                    source: './images/app_images/qmark3.webp'
 
         ############### Recording length adjustment ##############
         BoxLayout:
@@ -46,16 +46,35 @@
                 font_size: self.width/16
                 size_hint: .5, 1
             Button:
-                text: '+'
+                text: '-'
+                id: negative_button
                 size_hint: .15, 1
+                background_color: (0, 0, 0)
+                on_press:
+                    root.adjust_default_recording_length(-1)
                 on_release:
-                    root.adjust_default_recording_length(1)
+                    root.return_button_background_color()
             Button:
                 id: default_recording_length
                 size_hint: .2, 1
                 text: str(root.default_recording_length)
             Button:
-                text: '-'
+                id: positive_button
+                text: '+'
                 size_hint: .15, 1
+                background_color: (0, 0, 0)
+                on_press:
+                    root.adjust_default_recording_length(1)
                 on_release:
-                    root.adjust_default_recording_length(-1)
+                    root.return_button_background_color()
+        ############### Recording length adjustment ##############
+        BoxLayout:
+            id: default_measurement_type_container
+            orientation: 'horizontal'
+            size_hint:1, .9
+            Button:
+                text: 'Default measurement type:'
+                font_size: self.width/16
+                size_hint: .5, 1
+            Button:
+                id: main_dropdown_button

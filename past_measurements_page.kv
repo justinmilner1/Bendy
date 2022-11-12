@@ -9,22 +9,39 @@
         orientation: 'vertical'
         spacing: "10dp"
         padding: "10dp"
+        id: vertical_box_layout
         ############### Title, help, and settings ##############
         BoxLayout:
             orientation: 'horizontal'
             size_hint: 1, .1
 
-
             Button:
                 id: back_button
                 background_color: 0,0,0,0
-                on_release: app.root.current = "main_page"
+                on_release: root.leave()
+                size_hint_x: .2
                 Image:
                     center_x: self.parent.center_x
                     center_y: self.parent.center_y
-                    source: './images/back_button.jpeg'
+                    source: './images/app_images/back_button.jpeg'
 
             Button:
                 text: "past_measurements page"
-                size_hint: 2.5, 1
+                size_hint_x: .8
                 pos_hint: {"center_y": .5}
+        ScrollView:
+            GridLayout:
+                size_hint_y: None
+                cols: 2
+                row_default_height: root.height*0.3
+                height: self.minimum_height
+                padding: "10dp"
+                id: vertical_box_layout
+
+#            GridLayout:
+#                padding: "5dp"
+#                id: container_hip
+#                size_hint_x: None
+#                rows: 1
+#                col_default_width: root.width/2.75
+#                id: vertical_box_layout

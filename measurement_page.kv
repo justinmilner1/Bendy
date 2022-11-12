@@ -21,7 +21,7 @@
                 Image:
                     center_x: self.parent.center_x
                     center_y: self.parent.center_y
-                    source: './images/back_button.jpeg'
+                    source: './images/app_images/back_button.jpeg'
             Button:
                 text: "New Measurement"
                 size_hint: 2.5, 1
@@ -34,7 +34,7 @@
                 Image:
                     center_x: self.parent.center_x
                     center_y: self.parent.center_y
-                    source: './images/qmark3.webp'
+                    source: './images/app_images/qmark3.webp'
 
         ############### Main video ##############
         Image:
@@ -46,7 +46,8 @@
             text: 'Start recording'
             size_hint: 1, .1
             on_release:
-                root.start_recording()
+                #root.start_recording()
+                root.take_measurement = True
 
         ############### Recording length adjustment ##############
         BoxLayout:
@@ -59,23 +60,26 @@
                 size_hint: .5, 1
 
             Button:
-                text: '+'
+                id: negative_button
+                background_color: (0, 0, 0)
+                text: '-'
                 size_hint: .15, 1
+                on_press:
+                    root.adjust_recording_length(-1)
                 on_release:
-                    root.adjust_recording_length(1)
+                    root.return_button_background_color()
 
             Button:
                 id: recording_length
                 size_hint: .2, 1
                 text: str(root.recording_length)
 
-
-
             Button:
-                text: '-'
+                id: positive_button
+                background_color: (0, 0, 0)
+                text: '+'
                 size_hint: .15, 1
+                on_press:
+                    root.adjust_recording_length(1)
                 on_release:
-                    root.adjust_recording_length(-1)
-
-
-
+                    root.return_button_background_color()
